@@ -1,54 +1,56 @@
 # AuroraExpress
 
-AuroraExpress is a Python-based application that helps users generate an Aurora oneliner based on a few inputs. The application has a simple and intuitive GUI, which allows users to enter the required parameters and generate the oneliner command quickly.
+AuroraExpress is a tool for auto-generating Aurora oneliners based on a few inputs.
 
-## Features
+## Contents
 
-* User-friendly GUI: The application features an easy-to-use graphical user interface designed with tkinter.
-* Dynamic input fields: Depending on the hand side selection, the application dynamically adjusts the input fields.
-* Automated command generation: By entering the required parameters, users can automatically generate an Aurora oneliner.
+This repository contains two versions of the AuroraExpress tool:
 
-## Installation
+1. **Local Tool:** A standalone Python script that generates Aurora oneliners. Can be run on any system with Python and the required libraries installed.
 
-Follow these steps to install the AuroraExpress application:
+2. **Web App:** A Flask web application that provides a user-friendly interface for generating Aurora oneliners. Can be run on a server and accessed through a web browser.
 
-1. Clone the GitHub repository:
-git clone https://github.com/Athen-Player1/AuroraExpress.git
+## Local Tool
 
-2. Navigate to the cloned directory:
-cd AuroraExpress
+The local version of the AuroraExpress tool is a Python script that uses the Tkinter library for its graphical user interface.
 
-3. Make sure that you have Python installed on your machine. This application requires Python 3.6 or later. You can download Python from the [official website](https://www.python.org/downloads/).
+### Requirements
 
-4. The application uses tkinter for the GUI. If tkinter is not already installed with your Python version, you can install it using your package manager. For Debian-based systems, you can use:
-`sudo apt-get install python3-tk`
+- Python
+- Tkinter
 
-## Usage
+### Installation
 
-To use the application, follow these steps:
+To use the local version of the AuroraExpress tool, you need to have Python installed on your system. If you don't already have Python installed, you can download it from the official Python website.
 
-1. Run the `genorator.py` script:
-python genorator.py
+Tkinter comes pre-installed with Python on Windows. On Linux, you may need to install it using your package manager (for example, `sudo apt-get install python3-tk` on Ubuntu).
 
-2. Enter the required parameters in the input fields, such as the customer key, branch, tag, product, hand side, etc.
-3. Click on the 'Generate Oneliner' button.
-4. The generated oneliner command will appear in the output field.
+### Usage
 
-## Code Structure
+To run the local version of the AuroraExpress tool, navigate to the /Local Tool directory and run the `genorator.py` script with Python:
 
-* `genorator.py` - This is the main script that contains the GUI and the logic for generating the Aurora oneliner.
 
-## License
+python3 genorator.py
 
-The project is licensed under the GPL-3.0 license.
 
-## Contribution
+##Web App
+The web version of the AuroraExpress tool is a Flask web application. It provides a modern, easy-to-navigate interface for generating Aurora oneliners.
 
-Contributions to the project are welcome. Please ensure that any pull requests or issues are clearly described.
+##Requirements:
+Python
+Flask
 
-For major changes, please open an issue first to discuss what you would like to change.
+##Installation
+To use the web version of the AuroraExpress tool, you need to have Python and Flask installed on your system. If you don't already have Python installed, you can download it from the official Python website. You can install Flask using pip:
 
-## Contact
+pip install flask
 
-If you have any questions, issues, or suggestions, please open an issue on GitHub.
-Please note that the installation instructions for tkinter are for Debian-based systems. If your users are using a different operating system, they might need to install tkinter in a different way.
+##Usage
+To run the web version of the AuroraExpress tool, navigate to the /Web App directory and run the app.py script with Python:
+
+python3 app.py
+Then, open a web browser and navigate to http://localhost:5000.
+
+License
+This project is licensed under the GPL-3.0 license.
+
