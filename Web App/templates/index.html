@@ -23,7 +23,33 @@
                 <label for="customer_key">Customer Key</label>
                 <input type="text" class="form-control" id="customer_key" name="customer_key">
             </div>
-            <!-- Add the rest of your form inputs here -->
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <input type="text" class="form-control" id="branch" name="branch">
+            </div>
+            <div class="form-group">
+                <label for="tag">Tag</label>
+                <input type="text" class="form-control" id="tag" name="tag">
+            </div>
+            <div class="form-group">
+                <label for="product">Product</label>
+                <select class="form-control" id="product" name="product">
+                    <option value="arm_hand_e">Arm Hand E</option>
+                    <option value="hand_e">Hand E</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hand_side">Hand Side</label>
+                <select class="form-control" id="hand_side" name="hand_side">
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="both">Both</option>
+                </select>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="reinstall" name="reinstall">
+                <label class="form-check-label" for="reinstall">Reinstall</label>
+            </div>
             <button type="submit" class="btn btn-primary">Generate Oneliner</button>
         </form>
         {% if oneliner %}
