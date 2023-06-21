@@ -21,7 +21,7 @@ cd AuroraExpress
 3. Make sure that you have Python installed on your machine. This application requires Python 3.6 or later. You can download Python from the [official website](https://www.python.org/downloads/).
 
 4. The application uses tkinter for the GUI. If tkinter is not already installed with your Python version, you can install it using your package manager. For Debian-based systems, you can use:
-'sudo apt-get install python3-tk'
+`sudo apt-get install python3-tk`
 
 ## Usage
 
