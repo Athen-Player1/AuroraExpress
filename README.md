@@ -33,24 +33,24 @@ To run the local version of the AuroraExpress tool, navigate to the /Local Tool 
 python3 genorator.py
 
 
-##Web App
+## Web App
 The web version of the AuroraExpress tool is a Flask web application. It provides a modern, easy-to-navigate interface for generating Aurora oneliners.
 
-##Requirements:
+## Requirements:
 Python
 Flask
 
-##Installation
+## Installation
 To use the web version of the AuroraExpress tool, you need to have Python and Flask installed on your system. If you don't already have Python installed, you can download it from the official Python website. You can install Flask using pip:
 
 pip install flask
 
-##Usage
+## Usage
 To run the web version of the AuroraExpress tool, navigate to the /Web App directory and run the app.py script with Python:
 
 python3 app.py
 Then, open a web browser and navigate to http://localhost:5000.
 
-License
+# License
 This project is licensed under the GPL-3.0 license.
 
