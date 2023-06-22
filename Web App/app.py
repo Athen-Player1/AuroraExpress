@@ -7,6 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         customer_key = request.form['customer_key']
+        playbook = request.form['playbook']
         branch = request.form['branch']
         tag = request.form['tag']
         product = request.form['product']
@@ -18,7 +19,7 @@ def index():
         arm_ip_left = request.form['arm_ip_left']
         ur_robot_type = request.form['ur_robot_type']
 
-        oneliner = "bash <(curl -Ls bit.ly/run-aurora) server_and_nuc_deploy --branch " + branch + " customer_key=\"" + customer_key + "\" product=" + product + " reinstall=" + str(reinstall)
+        oneliner = "bash <(curl -Ls https://raw.githubusercontent.com/shadow-robot/aurora/"+tag+"/bin/run-ansible.sh) " + playbook + " --branch " + branch + " customer_key=\"" + customer_key + "\" product=" + product + " reinstall=" + str(reinstall)
 
         if product == "arm_hand_e":
             oneliner += " hand_side=" + hand_side
