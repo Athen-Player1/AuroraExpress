@@ -1,3 +1,9 @@
+body {
+    background-image: linear-gradient(to bottom right, teal, magenta);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
 .container {
     display: flex;
     justify-content: space-between;

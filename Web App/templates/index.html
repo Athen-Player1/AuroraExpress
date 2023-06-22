@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Aurora Express</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-    <h1>Aurora Express</h1>
     <div class="container">
         <div class="left-column">
-            <h2>Input Form</h2>
-            <form method="POST">
+            <h1>Oneliner Generator</h1>
+            <form action="/" method="post">
                 <label for="customer_key">Customer Key:</label>
-                <input type="text" id="customer_key" name="customer_key" required>
+                <input type="text" name="customer_key" id="customer_key" value="{{ request.form.customer_key }}">
 
                 <label for="playbook">Playbook:</label>
-                <input type="text" id="playbook" name="playbook" required>
+                <input type="text" name="playbook" id="playbook" value="{{ request.form.playbook }}">
 
                 <label for="branch">Branch:</label>
-                <input type="text" id="branch" name="branch" required>
+                <input type="text" name="branch" id="branch" value="{{ request.form.branch }}">
 
                 <label for="tag">Tag:</label>
-                <input type="text" id="tag" name="tag" required>
+                <input type="text" name="tag" id="tag" value="{{ request.form.tag }}">
 
                 <label for="product">Product:</label>
-                <select id="product" name="product" required>
-                    <option value="arm_hand_e">arm_hand_e</option>
-                    <option value="hand_e">hand_e</option>
+                <select name="product" id="product">
+                    <option value="arm_hand_e" {% if request.form.product == 'arm_hand_e' %}selected{% endif %}>arm_hand_e</option>
+                    <option value="hand_e" {% if request.form.product == 'hand_e' %}selected{% endif %}>hand_e</option>
                 </select>
 
                 <label for="hand_side">Hand Side:</label>
-                <select id="hand_side" name="hand_side" required>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="both">Both</option>
+                <select name="hand_side" id="hand_side">
+                    <option value="left" {% if request.form.hand_side == 'left' %}selected{% endif %}>left</option>
+                    <option value="right" {% if request.form.hand_side == 'right' %}selected{% endif %}>right</option>
+                    <option value="both" {% if request.form.hand_side == 'both' %}selected{% endif %}>both</option>
                 </select>
 
                 <label for="reinstall">Reinstall:</label>
-                <input type="checkbox" id="reinstall" name="reinstall">
+                <input type="checkbox" name="reinstall" id="reinstall" {% if request.form.reinstall %}checked{% endif %}>
 
                 <label for="ethercat_right_arm">EtherCAT Right Arm:</label>
-                <input type="text" id="ethercat_right_arm" name="ethercat_right_arm">
+                <select name="ethercat_right_arm" id="ethercat_right_arm">
+                    <option value="eno1" {% if request.form.ethercat_right_arm == 'eno1' %}selected{% endif %}>eno1</option>
+                </select>
 
                 <label for="arm_ip_right">Right Arm IP:</label>
-                <input type="text" id="arm_ip_right" name="arm_ip_right">
+                <input type="text" name="arm_ip_right" id="arm_ip_right" value="{{ request.form.arm_ip_right }}">
 
                 <label for="ethercat_left_arm">EtherCAT Left Arm:</label>
-                <input type="text" id="ethercat_left_arm" name="ethercat_left_arm">
+                <input type="text" name="ethercat_left_arm" id="ethercat_left_arm" value="{{ request.form.ethercat_left_arm }}">
 
                 <label for="arm_ip_left">Left Arm IP:</label>
-                <input type="text" id="arm_ip_left" name="arm_ip_left">
+                <input type="text" name="arm_ip_left" id="arm_ip_left" value="{{ request.form.arm_ip_left }}">
 
                 <label for="ur_robot_type">UR Robot Type:</label>
-                <select id="ur_robot_type" name="ur_robot_type" required>
-                    <option value="ur10e">ur10e</option>
+                <select name="ur_robot_type" id="ur_robot_type">
+                    <option value="ur3">UR3</option>
+                    <option value="ur5">UR5</option>
+                    <option value="ur10">UR10</option>
                 </select>
 
                 <input type="submit" value="Generate">
             </form>
         </div>
         <div class="right-column">
-            {% if oneliner %}
-                <h2>Generated Oneliner:</h2>
-                <div class="oneliner-container">
-                    <textarea id="oneliner-output" rows="5" readonly>{{ oneliner }}</textarea>
-                    <button class="copy-button" onclick="copyToClipboard()">Copy</button>
-                </div>
-            {% endif %}
+            <div class="oneliner-container">
+                <textarea id="oneliner-output" readonly>{{ oneliner }}</textarea>
+                <button class="copy-button" onclick="copyToClipboard()">Copy</button>
+            </div>
         </div>
     </div>
 
     <script>
         function copyToClipboard() {
-            var copyText = document.getElementById("oneliner-output");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
+            var onelinerOutput = document.getElementById("oneliner-output");
+            onelinerOutput.select();
             document.execCommand("copy");
         }
     </script>
 </body>
+
 </html>
