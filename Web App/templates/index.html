@@ -18,11 +18,18 @@
                 <input type="text" name="playbook" id="playbook" value="{{ request.form.playbook }}">
 
                 <label for="branch">Branch:</label>
-                <input type="text" name="branch" id="branch" value="{{ request.form.branch }}">
+<select name="branch" id="branch">
+  {% for branch in branches %}
+    <option value="{{ branch }}">{{ branch }}</option>
+  {% endfor %}
+</select>
+
 
                 <label for="tag">Tag:</label>
-                <input type="text" name="tag" id="tag" value="{{ request.form.tag }}">
-
+                <select id="tag" name="tag" required>
+                    {% for version in versions %}
+                        <option value="{{ version }}">{{ version }}</option>
+                    {% endfor %}
                 <label for="product">Product:</label>
                 <select name="product" id="product">
                     <option value="arm_hand_e" {% if request.form.product == 'arm_hand_e' %}selected{% endif %}>arm_hand_e</option>
