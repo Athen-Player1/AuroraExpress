@@ -43,7 +43,7 @@ Tkinter comes pre-installed with Python on Windows. On Linux, you may need to in
 To run the local version of the AuroraExpress tool, navigate to the /Local Tool directory and run the `genorator.py` script with Python:
 
 
-python3 genorator.py
+`python3 genorator.py`
 
 
 ## Web App
@@ -56,7 +56,7 @@ Flask
 ## Installation
 To use the web version of the AuroraExpress tool, you need to have Python and Flask installed on your system. If you don't already have Python installed, you can download it from the official Python website. You can install Flask using pip:
 
-pip install flask
+`pip install flask`
 
 ## Usage
 To run the web version of the AuroraExpress tool, navigate to the /Web App directory and run the app.py script with Python:
