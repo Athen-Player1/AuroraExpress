@@ -61,7 +61,8 @@ pip install flask
 ## Usage
 To run the web version of the AuroraExpress tool, navigate to the /Web App directory and run the app.py script with Python:
 
-python3 app.py
+`python3 app.py`
+
 Then, open a web browser and navigate to http://localhost:5000.
 
 # License
