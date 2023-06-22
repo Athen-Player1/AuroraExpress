@@ -48,7 +48,6 @@ form {
 
 .copy-button {
     margin-left: 10px;
-    background-image: linear-gradient(to right, teal, magenta);
     color: white;
     border: none;
     padding: 5px 10px;

@@ -1,83 +1,86 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Aurora Express</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("oneliner-output");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Copied to clipboard: " + copyText.value);
+        }
+    </script>
 </head>
-
 <body>
     <div class="container">
         <div class="left-column">
             <h1>Oneliner Generator</h1>
-            <form action="/" method="post">
+            <form method="POST" action="/">
                 <label for="customer_key">Customer Key:</label>
-                <input type="text" name="customer_key" id="customer_key" value="{{ request.form.customer_key }}">
+                <input type="text" id="customer_key" name="customer_key" required><br>
 
                 <label for="playbook">Playbook:</label>
-                <input type="text" name="playbook" id="playbook" value="{{ request.form.playbook }}">
+                <input type="text" id="playbook" name="playbook" required><br>
 
                 <label for="branch">Branch:</label>
-                <input type="text" name="branch" id="branch" value="{{ request.form.branch }}">
+                <select id="branch" name="branch" required>
+                    {% for branch in branches %}
+                        <option value="{{ branch }}">{{ branch }}</option>
+                    {% endfor %}
+                </select><br>
 
-                <label for="tag">Tag:</label>
-                <input type="text" name="tag" id="tag" value="{{ request.form.tag }}">
+                  <label for="tag">Aurora Version:</label>
+                <select id="tag" name="tag" required>
+                    {% for version in versions %}
+                        <option value="{{ version }}">{{ version }}</option>
+                    {% endfor %}
+                </select><br>
 
                 <label for="product">Product:</label>
-                <select name="product" id="product">
-                    <option value="arm_hand_e" {% if request.form.product == 'arm_hand_e' %}selected{% endif %}>arm_hand_e</option>
-                    <option value="hand_e" {% if request.form.product == 'hand_e' %}selected{% endif %}>hand_e</option>
-                </select>
+                <select id="product" name="product" required>
+                    <option value="hand_e">hand_e</option> 
+                    <option value="arm_hand_e">arm_hand_e</option>
+                    <option value="hand_lite">hand_lite</option>
+                    </select><br>
 
                 <label for="hand_side">Hand Side:</label>
-                <select name="hand_side" id="hand_side">
-                    <option value="left" {% if request.form.hand_side == 'left' %}selected{% endif %}>left</option>
-                    <option value="right" {% if request.form.hand_side == 'right' %}selected{% endif %}>right</option>
-                    <option value="both" {% if request.form.hand_side == 'both' %}selected{% endif %}>both</option>
-                </select>
+               <select id="hand_side" name="hand_side" required>
+                    <option value="both">Bimanual</option> 
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select><br>
 
                 <label for="reinstall">Reinstall:</label>
-                <input type="checkbox" name="reinstall" id="reinstall" {% if request.form.reinstall %}checked{% endif %}>
+                <input type="checkbox" id="reinstall" name="reinstall"><br>
 
                 <label for="ethercat_right_arm">EtherCAT Right Arm:</label>
-                <select name="ethercat_right_arm" id="ethercat_right_arm">
-                    <option value="eno1" {% if request.form.ethercat_right_arm == 'eno1' %}selected{% endif %}>eno1</option>
-                </select>
+                <input type="text" id="ethercat_right_arm" name="ethercat_right_arm" required><br>
 
-                <label for="arm_ip_right">Right Arm IP:</label>
-                <input type="text" name="arm_ip_right" id="arm_ip_right" value="{{ request.form.arm_ip_right }}">
+                <label for="arm_ip_right">Arm IP Right:</label>
+                <input type="text" id="arm_ip_right" name="arm_ip_right" required><br>
 
                 <label for="ethercat_left_arm">EtherCAT Left Arm:</label>
-                <input type="text" name="ethercat_left_arm" id="ethercat_left_arm" value="{{ request.form.ethercat_left_arm }}">
+                <input type="text" id="ethercat_left_arm" name="ethercat_left_arm" required><br>
 
-                <label for="arm_ip_left">Left Arm IP:</label>
-                <input type="text" name="arm_ip_left" id="arm_ip_left" value="{{ request.form.arm_ip_left }}">
+                <label for="arm_ip_left">Arm IP Left:</label>
+                <input type="text" id="arm_ip_left" name="arm_ip_left" required><br>
 
                 <label for="ur_robot_type">UR Robot Type:</label>
-                <select name="ur_robot_type" id="ur_robot_type">
-                    <option value="ur3">UR3</option>
-                    <option value="ur5">UR5</option>
-                    <option value="ur10">UR10</option>
-                </select>
+                <input type="text" id="ur_robot_type" name="ur_robot_type" required><br>
 
                 <input type="submit" value="Generate">
             </form>
         </div>
         <div class="right-column">
             <div class="oneliner-container">
+                <h2>Generated Oneliner:</h2>
+                <br>
                 <textarea id="oneliner-output" readonly>{{ oneliner }}</textarea>
                 <button class="copy-button" onclick="copyToClipboard()">Copy</button>
             </div>
         </div>
     </div>
-
-    <script>
-        function copyToClipboard() {
-            var onelinerOutput = document.getElementById("oneliner-output");
-            onelinerOutput.select();
-            document.execCommand("copy");
-        }
-    </script>
 </body>
-
 </html>

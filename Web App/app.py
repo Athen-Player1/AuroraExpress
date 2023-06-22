@@ -1,7 +1,26 @@
+import requests
 from flask import Flask, render_template, request
 import os
 
 app = Flask(__name__)
+
+def get_release_versions():
+    url = "https://api.github.com/repos/shadow-robot/aurora/releases"
+    response = requests.get(url)
+    if response.status_code == 200:
+        releases = response.json()
+        versions = [release["tag_name"] for release in releases]
+        return versions
+    return []
+
+def get_branches():
+    url = "https://api.github.com/repos/shadow-robot/aurora/branches"
+    response = requests.get(url)
+    if response.status_code == 200:
+        branches = response.json()
+        branch_names = [branch["name"] for branch in branches]
+        return branch_names
+    return []
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -36,9 +55,9 @@ def index():
             oneliner += " ethercat_left_arm=\"" + ethercat_left_arm + "\""
             oneliner += " arm_ip_left=\"" + arm_ip_left + "\""
 
-        return render_template('index.html', oneliner=oneliner)
+        return render_template('index.html', oneliner=oneliner, versions=get_release_versions(), branches=get_branches())
 
-    return render_template('index.html')
+    return render_template('index.html', versions=get_release_versions(), branches=get_branches())
 
 if __name__ == '__main__':
     app.run()
