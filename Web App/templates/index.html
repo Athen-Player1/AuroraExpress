@@ -1,70 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aurora Express </title>
+    <title>Aurora Express</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Oneliner Generator</h1>
-    <form method="POST">
-        <label for="customer_key">Customer Key:</label>
-        <input type="text" id="customer_key" name="customer_key" required><br>
+    <h1>Aurora Express</h1>
+    <div class="container">
+        <div class="left-column">
+            <h2>Input Form</h2>
+            <form method="POST">
+                <label for="customer_key">Customer Key:</label>
+                <input type="text" id="customer_key" name="customer_key" required>
 
-        <label for="branch">Branch:</label>
-        <input type="text" id="branch" name="branch" required><br>
+                <label for="playbook">Playbook:</label>
+                <input type="text" id="playbook" name="playbook" required>
 
-        <label for="branch">playbook:</label>
-        <input type="text" id="playbook" name="playbook" required><br>
+                <label for="branch">Branch:</label>
+                <input type="text" id="branch" name="branch" required>
 
-        <label for="tag">Tag:</label>
-        <input type="text" id="tag" name="tag" required><br>
+                <label for="tag">Tag:</label>
+                <input type="text" id="tag" name="tag" required>
 
-        <label for="product">Product:</label>
-        <select id="product" name="product" required>
-            <option value="arm_hand_e">arm_hand_e</option>
-            <option value="hand_e">hand_e</option>
-        </select><br>
+                <label for="product">Product:</label>
+                <select id="product" name="product" required>
+                    <option value="arm_hand_e">arm_hand_e</option>
+                    <option value="hand_e">hand_e</option>
+                </select>
 
-        <label for="hand_side">Hand Side:</label>
-        <select id="hand_side" name="hand_side" required>
-            <option value="left">left</option>
-            <option value="right">right</option>
-            <option value="both">both</option>
-        </select><br>
+                <label for="hand_side">Hand Side:</label>
+                <select id="hand_side" name="hand_side" required>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="both">Both</option>
+                </select>
 
-        <label for="reinstall">Reinstall:</label>
-        <input type="checkbox" id="reinstall" name="reinstall"><br>
+                <label for="reinstall">Reinstall:</label>
+                <input type="checkbox" id="reinstall" name="reinstall">
 
-        <label for="ethercat_right_arm">EtherCAT Right Arm:</label>
-        <select id="ethercat_right_arm" name="ethercat_right_arm" required>
-            <option value="eno1">eno1</option>
-        </select><br>
+                <label for="ethercat_right_arm">EtherCAT Right Arm:</label>
+                <input type="text" id="ethercat_right_arm" name="ethercat_right_arm">
 
-        <label for="arm_ip_right">Right Arm IP:</label>
-        <input type="text" id="arm_ip_right" name="arm_ip_right" required><br>
+                <label for="arm_ip_right">Right Arm IP:</label>
+                <input type="text" id="arm_ip_right" name="arm_ip_right">
 
-        <label for="ethercat_left_arm">EtherCAT Left Arm:</label>
-        <input type="text" id="ethercat_left_arm" name="ethercat_left_arm" required><br>
+                <label for="ethercat_left_arm">EtherCAT Left Arm:</label>
+                <input type="text" id="ethercat_left_arm" name="ethercat_left_arm">
 
-        <label for="arm_ip_left">Left Arm IP:</label>
-        <input type="text" id="arm_ip_left" name="arm_ip_left" required><br>
+                <label for="arm_ip_left">Left Arm IP:</label>
+                <input type="text" id="arm_ip_left" name="arm_ip_left">
 
-        <label for="ur_robot_type">UR Robot Type:</label>
-        <select id="ur_robot_type" name="ur_robot_type" required>
-            <option value="ur10e">ur10e</option>
-        </select><br>
+                <label for="ur_robot_type">UR Robot Type:</label>
+                <select id="ur_robot_type" name="ur_robot_type" required>
+                    <option value="ur10e">ur10e</option>
+                </select>
 
-        <input type="submit" value="Generate">
-    </form>
-
-    {% if oneliner %}
-    <h2>Generated Oneliner:</h2>
-    <div class="oneliner-container">
-        <textarea id="oneliner-output" rows="5" readonly>{{ oneliner }}</textarea>
-        <button class="copy-button" onclick="copyToClipboard()">Copy</button>
+                <input type="submit" value="Generate">
+            </form>
+        </div>
+        <div class="right-column">
+            {% if oneliner %}
+                <h2>Generated Oneliner:</h2>
+                <div class="oneliner-container">
+                    <textarea id="oneliner-output" rows="5" readonly>{{ oneliner }}</textarea>
+                    <button class="copy-button" onclick="copyToClipboard()">Copy</button>
+                </div>
+            {% endif %}
+        </div>
     </div>
-{% endif %}
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("oneliner-output");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
 </body>
 </html>

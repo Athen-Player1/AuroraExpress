@@ -1,65 +1,52 @@
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, teal, magenta);
-    color: #fff;
-    padding: 20px;
-    margin: 0;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-h1, h2 {
+.left-column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.right-column {
+    flex: 1;
+}
+
+h1 {
     text-align: center;
 }
 
+h2 {
+    margin-top: 0;
+}
+
 form {
-    margin: 0 auto;
-    max-width: 400px;
+    display: grid;
+    gap: 10px;
 }
 
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+.oneliner-container {
+    display: flex;
 }
 
-input[type="text"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #000;
+#oneliner-output {
+    flex: 1;
+    resize: none;
 }
 
-input[type="checkbox"] {
-    margin-top: 10px;
-}
-
-input[type="submit"] {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    background-color: teal;
-    color: #fff;
-    cursor: pointer;
+.copy-button {
+    margin-left: 10px;
 }
 
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #000;
 }
 
-textarea[readonly] {
-    background-color: transparent;
-    color: #fff;
-    resize: none;
+label {
+    display: block;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
 }
