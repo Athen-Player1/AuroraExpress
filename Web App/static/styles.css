@@ -28,15 +28,25 @@ form {
 
 .oneliner-container {
     display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 #oneliner-output {
     flex: 1;
     resize: none;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px;
 }
 
 .copy-button {
     margin-left: 10px;
+    background-image: linear-gradient(to right, teal, magenta);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 textarea {
@@ -49,4 +59,24 @@ label {
 
 input[type="submit"] {
     margin-top: 10px;
+    background-image: linear-gradient(to right, teal, magenta);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    filter: brightness(1.1);
+}
+
+input[type="text"],
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
 }
